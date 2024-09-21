@@ -1,33 +1,108 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  let [data,setData]=useState({});
+
+let handelsubmit=(e)=>{
+  e.preventDefault();
+  
+}
+
+
+
+
+
+
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <form method="post" onSubmit={(handelsubmit)} >
+
+    <table border={1} align='center'>
+    <caption>
+  <h2>User Data</h2>
+</caption>
+      <thead>
+        <tbody>
+          <th>
+            <tr>
+              <td>
+               UserID
+              </td>
+              <td>
+          <input type="text" name="" />
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+              EmailID
+              </td>
+              <td>
+          <input type="text" name="" />
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+            Password
+              </td>
+              <td>
+          <input type="password" name="" />
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+              Address
+              </td>
+              <td>
+          <textarea name="Addresss" ></textarea>
+              </td>
+            </tr>
+            <tr>
+              <td>Gender</td>
+              <td><input type="radio" name="Gender" id="Male" />Male
+              <input type="radio" name="Gender" id="Female" />Female</td>
+             
+            </tr>
+
+            <tr>
+              <td>
+              City
+              </td>
+              <td>
+         <select name="" id="">
+          <option value="">--Select City--</option>
+          <option value="">Surat</option>
+          <option value="">Ahmedabad</option>
+          <option value="">Baroda</option>
+          <option value="">Mumbai</option>
+          <option value="">Other</option>
+         </select>
+              </td>
+            </tr>
+            
+          
+            
+              <input type="submit" value="Submit" />
+           
+          </th>
+      
+        </tbody>
+        
+      </thead>
+    </table>
+
+
+
+
+
+
+    </form>
+      
     </>
   )
 }

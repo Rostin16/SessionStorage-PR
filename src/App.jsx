@@ -1,110 +1,62 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from "react";
+
+const App = () => {
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [storedName, setStoredName] = useState("");
+  const [storedEmail, setStoredEmail] = useState("");
 
 
-function App() {
-
-  let [data,setData]=useState({});
-
-let handelsubmit=(e)=>{
-  e.preventDefault();
-  
-}
+  useEffect(() => {
+    const savedName = sessionStorage.getItem("name");
+    const savedEmail = sessionStorage.getItem("email");
+    if (savedName) setStoredName(savedName);
+    if (savedEmail) setStoredEmail(savedEmail);
+  }, []);
 
 
-
-
-
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    sessionStorage.setItem("name", name);
+    sessionStorage.setItem("email", email);
+    setStoredName(name);
+    setStoredEmail(email);
+  };
 
   return (
-    <>
-    <form method="post" onSubmit={(handelsubmit)} >
+    <div style={{ padding: "20px" }}>
+      <h2 style={{color:"blue"}}>Localbox Miner</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Name: </label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Email: </label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
 
-    <table border={1} align='center'>
-    <caption>
-  <h2>User Data</h2>
-</caption>
-      <thead>
-        <tbody>
-          <th>
-            <tr>
-              <td>
-               UserID
-              </td>
-              <td>
-          <input type="text" name="" />
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-              EmailID
-              </td>
-              <td>
-          <input type="text" name="" />
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-            Password
-              </td>
-              <td>
-          <input type="password" name="" />
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-              Address
-              </td>
-              <td>
-          <textarea name="Addresss" ></textarea>
-              </td>
-            </tr>
-            <tr>
-              <td>Gender</td>
-              <td><input type="radio" name="Gender" id="Male" />Male
-              <input type="radio" name="Gender" id="Female" />Female</td>
-             
-            </tr>
-
-            <tr>
-              <td>
-              City
-              </td>
-              <td>
-         <select name="" id="">
-          <option value="">--Select City--</option>
-          <option value="">Surat</option>
-          <option value="">Ahmedabad</option>
-          <option value="">Baroda</option>
-          <option value="">Mumbai</option>
-          <option value="">Other</option>
-         </select>
-              </td>
-            </tr>
-            
-          
-            
-              <input type="submit" value="Submit" />
-           
-          </th>
-      
-        </tbody>
+     
+      <div style={{ marginTop: "20px" }}>
         
-      </thead>
-    </table>
+        <p>Name: {storedName}</p>
+        <p>Email: {storedEmail}</p>
+      </div>
+    </div>
+  );
+};
 
-
-
-
-
-
-    </form>
-      
-    </>
-  )
-}
-
-export default App
+export default App;

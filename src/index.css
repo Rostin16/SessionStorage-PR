@@ -1,0 +1,7 @@
+body{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  border: 3px solid rgb(183, 183, 196);
+width: 500px; }
